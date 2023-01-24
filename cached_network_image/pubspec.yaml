@@ -11,7 +11,7 @@ dependencies:
   octo_image: ^1.0.0
   cached_network_image_web:
     git:
-      url: https://github.com/SuaMusica/flutter_cached_network_image.git
+      url: git@github.com:Insight-Timer/flutter_cached_network_image.git
       ref: feature/errorListener
       path: cached_network_image_web
 
