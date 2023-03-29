@@ -14,7 +14,7 @@ dependencies:
   cached_network_image_platform_interface:
     git:
       url: https://github.com/Insight-Timer/flutter_cached_network_image.git
-      ref: feature/errorListener
+      ref: feature/errorListener-move-to-https
       path: cached_network_image_platform_interface
 
 dev_dependencies:
