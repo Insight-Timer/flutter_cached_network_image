@@ -43,8 +43,7 @@ class CachedNetworkImage extends StatelessWidget {
   static CacheManagerLogLevel get logLevel => CacheManager.logLevel;
 
   /// Set the log level of the cache manager to a [CacheManagerLogLevel].
-  static set logLevel(CacheManagerLogLevel level) =>
-      CacheManager.logLevel = level;
+  static set logLevel(CacheManagerLogLevel level) => CacheManager.logLevel = level;
 
   /// Evict an image from both the disk file based caching system of the
   /// [BaseCacheManager] as the in memory [ImageCache] of the [ImageProvider].
@@ -240,9 +239,8 @@ class CachedNetworkImage extends StatelessWidget {
     this.maxWidthDiskCache,
     this.maxHeightDiskCache,
     this.errorListener,
-    ImageRenderMethodForWeb imageRenderMethodForWeb =
-        ImageRenderMethodForWeb.HtmlImage,
-  }) : _image = CachedNetworkImageProvider(
+    ImageRenderMethodForWeb imageRenderMethodForWeb = ImageRenderMethodForWeb.HtmlImage,
+  })  : _image = CachedNetworkImageProvider(
           imageUrl,
           headers: httpHeaders,
           cacheManager: cacheManager,
@@ -252,20 +250,17 @@ class CachedNetworkImage extends StatelessWidget {
           maxHeight: maxHeightDiskCache,
           errorListener: errorListener,
         ),
-        super(key: key);
+        super();
 
   @override
   Widget build(BuildContext context) {
-    var octoPlaceholderBuilder =
-        placeholder != null ? _octoPlaceholderBuilder : null;
-    final octoProgressIndicatorBuilder =
-        progressIndicatorBuilder != null ? _octoProgressIndicatorBuilder : null;
+    var octoPlaceholderBuilder = placeholder != null ? _octoPlaceholderBuilder : null;
+    final octoProgressIndicatorBuilder = progressIndicatorBuilder != null ? _octoProgressIndicatorBuilder : null;
 
     ///If there is no placeholder OctoImage does not fade, so always set an
     ///(empty) placeholder as this always used to be the behaviour of
     ///CachedNetworkImage.
-    if (octoPlaceholderBuilder == null &&
-        octoProgressIndicatorBuilder == null) {
+    if (octoPlaceholderBuilder == null && octoProgressIndicatorBuilder == null) {
       octoPlaceholderBuilder = (context) => Container();
     }
 

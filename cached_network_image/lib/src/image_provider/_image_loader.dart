@@ -9,10 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 import 'package:cached_network_image_platform_interface'
-        '/cached_network_image_platform_interface.dart' as platform
-    show ImageLoader;
-import 'package:flutter/material.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+    '/cached_network_image_platform_interface.dart' as platform show ImageLoader;
 
 /// ImageLoader class to load images on IO platforms.
 class ImageLoader implements platform.ImageLoader {
@@ -43,6 +40,7 @@ class ImageLoader implements platform.ImageLoader {
       maxHeight,
       maxWidth,
       headers,
+      errorListener,
       imageRenderMethodForWeb,
       evictImage,
     );
@@ -74,6 +72,7 @@ class ImageLoader implements platform.ImageLoader {
       maxHeight,
       maxWidth,
       headers,
+      errorListener,
       imageRenderMethodForWeb,
       evictImage,
     );
@@ -94,8 +93,7 @@ class ImageLoader implements platform.ImageLoader {
   ) async* {
     try {
       assert(
-          cacheManager is ImageCacheManager ||
-              (maxWidth == null && maxHeight == null),
+          cacheManager is ImageCacheManager || (maxWidth == null && maxHeight == null),
           'To resize the image with a CacheManager the '
           'CacheManager needs to be an ImageCacheManager. maxWidth and '
           'maxHeight will be ignored when a normal CacheManager is used.');
@@ -141,7 +139,7 @@ class ImageLoader implements platform.ImageLoader {
       });
 
       if (errorListener != null) {
-        errorListener.call(e);
+        errorListener.call(this);
       } else {
         rethrow;
       }
