@@ -16,7 +16,7 @@ dependencies:
   cached_network_image_web:
     git:
       url: git@github.com:Insight-Timer/flutter_cached_network_image.git
-      ref: feature/errorListener
+      ref: merging_latest_develop
       path: cached_network_image_web
   flutter:
     sdk: flutter
